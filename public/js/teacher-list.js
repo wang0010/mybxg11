@@ -7,7 +7,31 @@ define(["jquery","template"],function($,template){
 		success:function(data){
 		  // 解析数据，渲染页面
 		  var html = template("tpl",{list:data.result});
-		  $("#teacher").html(html)
+		  $("#teacher").html(html);
+
+		  $(".qyorjy").on("click",function(){
+		  	  var that = this;
+		  	  // 登录注销功能
+		  	  var td = $(this).closest('td');
+		  	  var tcId = td.attr("data-tcId");
+		  	  var status = td.attr("data-status");
+		  	  $.ajax({
+		  	  	type:"post",
+		  	  	url:"/api/teacher/handle",
+		  	  	data : {tc_id:tcId,tc_status:status},
+		  	  	dataType:"json",
+		  	  	success:function(data){
+		  	  		if(data.code == 200){
+                       td.attr("data-status",data.result.tc_status);
+                       if(data.result.tc_status == 0){
+                           $(that).text("注销");
+                       }else{
+                       	   $(that).text("启用");
+                       }
+		  	  		}
+		  	  	}
+		  	  })
+		  })
 		}
 	})
 })
