@@ -9,4 +9,9 @@ require.config({
 		login:"../js/login",
 		teacherlist : "../js/teacher-list"
 	},
+	shim:{
+		bootstrap:{
+			deps:["jquery"]
+		}
+	}
 });
