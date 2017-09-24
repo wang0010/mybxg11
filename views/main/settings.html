@@ -15,8 +15,8 @@
             <!-- 头部 -->
              <?php include("./views/common/header.html") ?>
             <!-- 讲师资料 -->
-            <div class="body teacher-profile" id="personInfo">
-                <div class="settings">
+            <div class="body teacher-profile">
+                <div class="settings" id="personInfo">
                    <!-- 动态渲染 -->
                 </div>
             </div>
@@ -36,7 +36,7 @@
                             {{if tc_avatar}}
                             <img src="{{tc_avatar}}">
                             {{else}}
-                            <img src="./images/default.png">
+                            <img src="/public/images/default.png">
                             {{/if}}
                             <input type="file" id="upfile">
                             <div class="cover">
@@ -54,10 +54,10 @@
                         <label for="" class="col-xs-3 control-label">性别</label>
                         <div class="col-xs-3">
                             <label class="radio-inline">
-                                <input type="radio" name="tc_gender" {{if tc_gender == 0}}checked{{/if}}> 男
+                                <input type="radio" name="tc_gender" value="0" {{if tc_gender == 0}}checked{{/if}}> 男
                             </label>
                             <label class="radio-inline">
-                                <input name="tc_gender" type="radio" {{if tc_gender == 1}}checked{{/if}}> 女
+                                <input name="tc_gender" type="radio" value="1" {{if tc_gender == 1}}checked{{/if}}> 女
                             </label>
                         </div>
                     </div>
@@ -69,21 +69,16 @@
                     </div>
                     <div class="form-group">
                         <label for="" class="col-xs-3 control-label">籍贯</label>
-                        <div class="col-xs-5">
-                            <select name="" class="form-control input-sm">
-                                <option value="">河北省</option>
-                                <option value="">山东省</option>
-                                <option value="">北京市</option>
+                        <div class="col-xs-5" id="pcd">
+                            <select id="p" data-id="{{tc_province}}" name="" class="form-control input-sm">
+                                <option value="">请选择省....</option>
+
                             </select>
-                            <select name="" class="form-control input-sm">
-                                <option value="">河北省</option>
-                                <option value="">山东省</option>
-                                <option value="">北京市</option>
+                            <select data-id="tc_city" id="c" name="" class="form-control input-sm">
+                                <option value="">请选择市....</option>
                             </select>
-                            <select name="" class="form-control input-sm">
-                                <option value="">河北省</option>
-                                <option value="">山东省</option>
-                                <option value="">北京市</option>
+                            <select data-id="{{tc_district}}" id="d" name="" class="form-control input-sm">
+                                <option value="">请选择区/县</option>
                             </select>
                         </div>
                     </div>
@@ -108,12 +103,12 @@
                     <div class="form-group">
                         <label for="" class="col-xs-3 control-label">个人介绍</label>
                         <div class="col-xs-5 ckeditor">
-                            <textarea name="" rows="15" class="form-control input-sm">{{tc_introduce}}</textarea>
+                            <textarea name="tc_introduce" rows="15" class="form-control input-sm">{{tc_introduce}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-8">
-                            <a href="./course_add_step2.html" class="btn btn-success btn-sm pull-right">保 存</a>
+                            <input type="button" value="保存"  class="btn btn-success btn-sm pull-right">
                             <a href="./repass.html" class="btn btn-link btn-sm pull-right">更改密码？</a>
                         </div>
                     </div>
