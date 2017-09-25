@@ -7,9 +7,9 @@ require.config({
     bootstrap : 'bootstrap/js/bootstrap.min',
     datepicker : 'bootstrap-datepicker/js/bootstrap-datepicker',
     language : 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
-    validate : 'validate/jquery-validate',
-    form : 'jquery-form/jquery.form',
-    uploadify : 'uploadify/jquery.uploadify.min',
+    validate : 'validate/jquery-validate',//表单提交插件
+    form : 'jquery-form/jquery.form',//表单提交插件
+    uploadify : 'uploadify/jquery.uploadify.min',//头像上传插件
     region : 'jquery-region/jquery.region',
     ckeditor : 'ckeditor/ckeditor',
     util : '../js/util',
