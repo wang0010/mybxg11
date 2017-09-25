@@ -13,9 +13,12 @@ define(["jquery"],function($){
 		   	 		tcId = kv[1];
 		   	 		return false;
 		   	 	}
-		   	 })
+		   	 });
 		   }
 		   return tcId;
+		},
+		setMenu:function(path){
+			$(".aside .navs a[href='"+path+"']").addClass('active').closest('ul').show();
 		}
 	}
 })
