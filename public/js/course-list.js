@@ -1,6 +1,7 @@
 define(["jquery","template","util"],function($,template,util){
    // 设置导航菜单选中
    util.setMenu(location.pathname);
+   console.log(location.pathname)
    // 请求数据 
    $.ajax({
    	 type:"get",

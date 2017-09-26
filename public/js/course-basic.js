@@ -1,4 +1,4 @@
-define(["jquery","template","util","ckeditor"],function($,template,util,CKEDITOR){
+define(["jquery","template","util","ckeditor","validate","form"],function($,template,util,CKEDITOR){
    // 设置导航菜单
    util.setMenu("/course/add")
    // 获取课程ID
@@ -42,6 +42,28 @@ define(["jquery","template","util","ckeditor"],function($,template,util,CKEDITOR
 		 	toolbarGroups : [
 					{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
 					{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },				]
+		 })
+		 // 表单验证提交操作
+		 $("#basForm").validate({
+		 	sendForm:false,
+		 	valid:function(){
+		 		// 处理富文本提交同步
+		 		for(var instance in CKEDITOR.instances){
+		 			CKEDITOR.instances[instance].updateElement();
+		 		}
+		 		// 表单提交
+		 		$(this).ajaxSubmit({
+		 			type:"post",
+			 		url:"/api/course/update/basic",
+			 		data:{cs_id:csId},
+			 		dataType:"json",
+			 		success:function(data){
+			 			if(data.code == 200){
+			 				location.href = "/course/picture?cs_id=" + data.result.cs_id;
+			 			}
+			 		}
+		 		})
+		 	}
 		 })
    	  }
    })
