@@ -1,4 +1,4 @@
-define(["jquery","template","util","uploadify","jcrop","form"],function($,template,util){
+define(["jquery","template","util","uploadify","jcrop","form","states"],function($,template,util){
     util.setMenu("/course/add")
     // 获取课程ID
     var csId = util.qs("cs_id")

@@ -1,4 +1,4 @@
-define(["jquery","template","util","bootstrap","form"],function($,template,util){
+define(["jquery","template","util","bootstrap","form","states"],function($,template,util){
      // 设置导航栏
      util.setMenu("/course/add")
      // 获取ID

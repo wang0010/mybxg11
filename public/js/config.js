@@ -19,6 +19,11 @@ require.config({
     ckeditor : 'ckeditor/ckeditor',
     // 图片截取插件
     jcrop:"jcrop/js/Jcrop",
+    // 页面上方出现个蓝色加载条 插件
+    nprogress:"nprogress/nprogress",
+    // 柱形图插件
+    echarts:"echarts/echarts.min",
+
     util : '../js/util',
     common : '../js/common',
     login : '../js/login',
@@ -30,7 +35,8 @@ require.config({
     courseadd:"../js/course-add",
     coursebasic:"../js/course-basic",
     coursepicture:"../js/course-picture",
-    courselesson:"../js/course-lesson"
+    courselesson:"../js/course-lesson",
+    states:"../js/states"
   },
   shim : {
     bootstrap : {

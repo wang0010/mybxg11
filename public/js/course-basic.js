@@ -1,4 +1,4 @@
-define(["jquery","template","util","ckeditor","validate","form"],function($,template,util,CKEDITOR){
+define(["jquery","template","util","ckeditor","validate","form","states"],function($,template,util,CKEDITOR){
    // 设置导航菜单
    util.setMenu("/course/add")
    // 获取课程ID

@@ -1,4 +1,4 @@
-define(["jquery","template","util","datepicker","language","validate","form"],function($,template,util){
+define(["jquery","template","util","datepicker","language","validate","form","states"],function($,template,util){
    var tcId = util.qs("tc_id");
    if(tcId){
    	  // 编辑
