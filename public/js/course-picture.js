@@ -47,7 +47,7 @@ define(["jquery","template","util","uploadify","jcrop","form"],function($,templa
                 	success:function(data){
                 	   if(data.code == 200){
                 	   	 // 跳转到下一个步骤
-                	   	 location.href = "/course/lesson?cs_id" + data.result.cs_id;
+                	   	 location.href = "/course/lesson?cs_id=" + data.result.cs_id;
                 	   }
                 	}
                 })
