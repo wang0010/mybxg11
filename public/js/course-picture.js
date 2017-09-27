@@ -26,7 +26,7 @@ define(["jquery","template","util","uploadify","jcrop","form"],function($,templa
 			uploader:"/api/uploader/cover",
 			fileObjName:"cs_cover_original",
 			formData:{cs_id:csId}, //额外传递一个参数
-		    onUploadSussess:function(a,b,c){
+		    onUploadSuccess:function(a,b,c){
 		    	var obj = JSON.parse(b.trim())
                 $(".preview img").attr("src",obj.result.path);
                 // 上传成功之后直接选中选区
@@ -63,9 +63,8 @@ define(["jquery","template","util","uploadify","jcrop","form"],function($,templa
 		 	    aspectRatio:2
 		 	    // 回调函数
 		 	},function(){
-		 		// 销毁之前的裁切实例
-		 		nowCrop && nowCrop.destroy();
-		 		nowCrop = this
+		 		nowCrop && nowCrop.destroy()
+		 		nowCrop = this;
                 // 获取图片的宽度和高度
                 var width = this.ui.stage.width;
                 var height = this.ui.stage.height;
@@ -112,3 +111,8 @@ define(["jquery","template","util","uploadify","jcrop","form"],function($,templa
     })
 
 })	
+
+
+
+
+
