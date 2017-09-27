@@ -1,4 +1,4 @@
-define(["jquery","template","util","uploadify","Jcrop","form"],function($,template,util){
+define(["jquery","template","util","uploadify","jcrop","form"],function($,template,util){
     util.setMenu("/course/add")
     // 获取课程ID
     var csId = util.qs("cs_id")
@@ -11,6 +11,10 @@ define(["jquery","template","util","uploadify","Jcrop","form"],function($,templa
     	success:function(data){
 		var html = template("picTpl",data.result)
 		$("#picInfo").html(html)
+		// 选中图片
+         var img = $(".preview img").eq(0)
+
+         var nowCrop = null;
 		// 处理上传封面
 		$("#myfile").uploadify({
 			buttonText:"选择图片",
@@ -24,7 +28,10 @@ define(["jquery","template","util","uploadify","Jcrop","form"],function($,templa
 			formData:{cs_id:csId}, //额外传递一个参数
 		    onUploadSussess:function(a,b,c){
 		    	var obj = JSON.parse(b.trim())
-                $(".preview img").attr("src",obj.result.path)
+                $(".preview img").attr("src",obj.result.path);
+                // 上传成功之后直接选中选区
+                cropImage();
+                $("#cropBtn").text("保存图片").attr("data-flag",true)
 		    } 
 		})
     	// 处理封面裁切
@@ -50,14 +57,15 @@ define(["jquery","template","util","uploadify","Jcrop","form"],function($,templa
 				cropImage();
 			}
 		});
-         // 选中图片
-         var img = $(".preview img").eq(0)
 		// 封装一个独立的方法实现裁切图片功能
 		 function cropImage(){
 		 	img.Jcrop({
 		 	    aspectRatio:2
 		 	    // 回调函数
 		 	},function(){
+		 		// 销毁之前的裁切实例
+		 		nowCrop && nowCrop.destroy();
+		 		nowCrop = this
                 // 获取图片的宽度和高度
                 var width = this.ui.stage.width;
                 var height = this.ui.stage.height;
@@ -74,7 +82,7 @@ define(["jquery","template","util","uploadify","Jcrop","form"],function($,templa
 	        	 aInput.eq(2).val(w);
 	        	 aInput.eq(3).val(h);
 
-                // 动态创建一个选区
+                // 动态创建一个选s区
                 // this里面的一个方法
                 this.newSelection();
                 this.setSelect([x,y,w,h]);

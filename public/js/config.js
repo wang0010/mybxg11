@@ -18,7 +18,7 @@ require.config({
     // 
     ckeditor : 'ckeditor/ckeditor',
     // 图片截取插件
-    Jcrop:"jcrop/js/jcrop",
+    jcrop:"jcrop/js/Jcrop",
     util : '../js/util',
     common : '../js/common',
     login : '../js/login',
